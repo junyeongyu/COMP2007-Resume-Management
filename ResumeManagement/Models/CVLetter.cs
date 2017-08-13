@@ -14,6 +14,7 @@
         }
 
         [Key]
+        [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
         public string CVLetterId { get; set; }
 
         [Required]

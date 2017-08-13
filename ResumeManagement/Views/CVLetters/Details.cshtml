@@ -1,0 +1,62 @@
+﻿@model ResumeManagement.Models.CVLetter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CVLetter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resumes)
+        </dt>
+
+        <dd>
+            <ul>
+                @foreach (var Package in Model.Resumes)
+                {
+                    <li>@Package.Resume.Name</li>
+                }
+            </ul>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CVLetterId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

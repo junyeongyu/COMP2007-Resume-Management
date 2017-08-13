@@ -197,14 +197,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CVLettersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PackagesController.cs" />
+    <Compile Include="Controllers\ResumesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201708092228366_InitialCreate.cs" />
     <Compile Include="Migrations\201708092228366_InitialCreate.Designer.cs">
       <DependentUpon>201708092228366_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708132056304_CVLetterGenID.cs" />
+    <Compile Include="Migrations\201708132056304_CVLetterGenID.Designer.cs">
+      <DependentUpon>201708132056304_CVLetterGenID.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -277,6 +284,21 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\Resumes\Create.cshtml" />
+    <Content Include="Views\Resumes\Delete.cshtml" />
+    <Content Include="Views\Resumes\Details.cshtml" />
+    <Content Include="Views\Resumes\Edit.cshtml" />
+    <Content Include="Views\Resumes\Index.cshtml" />
+    <Content Include="Views\CVLetters\Create.cshtml" />
+    <Content Include="Views\CVLetters\Delete.cshtml" />
+    <Content Include="Views\CVLetters\Details.cshtml" />
+    <Content Include="Views\CVLetters\Edit.cshtml" />
+    <Content Include="Views\CVLetters\Index.cshtml" />
+    <Content Include="Views\Packages\Create.cshtml" />
+    <Content Include="Views\Packages\Delete.cshtml" />
+    <Content Include="Views\Packages\Details.cshtml" />
+    <Content Include="Views\Packages\Edit.cshtml" />
+    <Content Include="Views\Packages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -295,6 +317,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708092228366_InitialCreate.resx">
       <DependentUpon>201708092228366_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708132056304_CVLetterGenID.resx">
+      <DependentUpon>201708132056304_CVLetterGenID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

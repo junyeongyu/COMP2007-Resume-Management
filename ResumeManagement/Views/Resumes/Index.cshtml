@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ResumeManagement.Models.Resume>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Summary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Skill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkExperience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudyExperience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certificate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicantName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Summary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Skill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkExperience)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudyExperience)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Certificate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ResumeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ResumeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ResumeId })
+        </td>
+    </tr>
+}
+
+</table>
