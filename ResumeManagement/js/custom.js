@@ -16,20 +16,21 @@ $(function () {
 		return true;
 	});
 	
-	// add/edit item for sale in saleItmes
+	// add/edit item from items
 	$('.trigger-item-back').bind('click', function (event) {
 		location.href = '/saleItems';
 	});
 	
-	// delete item from saleItems
+    // delete item (resume/cvletter/package) from items
 	$('.trigger-item-delete').bind('click', function (event) {
 		if (confirm('Are you sure to delete this item?')) {
 			location.href = $(this).data('href');
 		}
 	});
 	
-	// click item in saleItems
+	// click item (resume/cvletter/package) in items
 	$('.panel .row').bind('click', function (event) {
-		location.href = '/saleItems/detail/' + $(this).closest('tr').data('id');
+	    $tr = $(this).closest('tr');
+	    location.href = $tr.data('link') + $tr.data('id');
 	});
 });
