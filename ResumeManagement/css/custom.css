@@ -1,0 +1,56 @@
+
+/* common */
+.hide {display: none;}
+
+/* social buttons */
+a.btn-facebook{color:#fff;background-color:#3b5998;border-color:rgba(0,0,0,0.2)}
+a.btn-facebook:hover{color: #3b5998; border-color: #007aff; background: transparent;}
+
+a.btn-twitter{color:#fff;background-color:#55acee;border-color:rgba(0,0,0,0.2)}
+a.btn-twitter:hover{color: #55acee; border-color: #007aff; background: transparent;}
+
+a.btn-register{color:#fff;}
+
+/* register */
+.btn--register-submit {width: 100%}
+
+/* classified ads */
+.btn-add-sales-item {margin-bottom: 20px;}
+.panel th, .panel td {
+  text-align: center;
+}
+.panel td.row {
+  cursor: pointer;
+}
+
+/* detail */
+.detail .form-group > * {
+  padding: 3px;
+}
+
+/* about */
+.my_twitter {
+  color: #FFF;
+}
+
+/* main */
+.welcome {
+  width: auto;
+  margin-top: 0;
+}
+@media (max-width: 768px) {
+  .welcome {
+    margin-top: 80px;
+  }
+  .welcome .text-404 {
+    font-size: 90px;
+  }
+  .welcome h2 {
+    margin-top: -10px;
+  }
+}
+
+/* footer */
+.credits {
+  margin: 2%;
+}

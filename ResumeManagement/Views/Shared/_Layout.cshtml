@@ -1,58 +1,167 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="description" content="Resume Management">
+    <meta name="author" content="Junyeong">
+    <link rel="shortcut icon" href="img/favicon.png">
 
-    <script type = 'text/javascript' >
-        var appInsights=window.appInsights||function(config)
-        {
-            function r(config){ t[config] = function(){ var i = arguments; t.queue.push(function(){ t[config].apply(t, i)})} }
-            var t = { config:config},u=document,e=window,o='script',s=u.createElement(o),i,f;for(s.src=config.url||'//az416426.vo.msecnd.net/scripts/a/ai.0.js',u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=['Event','Exception','Metric','PageView','Trace','Ajax'];i.length;)r('track'+i.pop());return r('setAuthenticatedUserContext'),r('clearAuthenticatedUserContext'),config.disableExceptionTracking||(i='onerror',r('_'+i),f=e[i],e[i]=function(config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o),s}),t
+    <title>Resume Management</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet" />
+
+    <link href="/css/custom.css" rel="stylesheet" />
+
+    <script type='text/javascript'>
+        var appInsights = window.appInsights || function (config) {
+            function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } }
+            var t = { config: config }, u = document, e = window, o = 'script', s = u.createElement(o), i, f; for (s.src = config.url || '//az416426.vo.msecnd.net/scripts/a/ai.0.js', u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Ajax']; i.length;) r('track' + i.pop()); return r('setAuthenticatedUserContext'), r('clearAuthenticatedUserContext'), config.disableExceptionTracking || (i = 'onerror', r('_' + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o), s }), t
         }({
-            instrumentationKey:'26e8fe8b-f847-4f05-a5b3-b5ccec1346d7'
+            instrumentationKey: '26e8fe8b-f847-4f05-a5b3-b5ccec1346d7'
         });
-        
-        window.appInsights=appInsights;
+
+        window.appInsights = appInsights;
         appInsights.trackPageView();
     </script>
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <!-- container section start -->
+    <section id="container" class="">
+        <!--header start-->
+
+        <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Resumes", "Index", "Resumes")</li>
-                    <li>@Html.ActionLink("CVLetters", "Index", "CVLetters")</li>
-                    <li>@Html.ActionLink("Packages", "Index", "Packages")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li><a href="http://junyeongyu.com/" target="new">Portfolio</a></li>
+
+            <!--logo start-->
+            <a href="/" class="logo">Resume <span class="lite">Management</span></a>
+            <!--logo end-->
+            @if (Request.IsAuthenticated == true)
+            {
+            <div class="top-nav notification-row">
+                <!-- notificatoin dropdown start-->
+                <ul class="nav pull-right top-menu">
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="username">@User.Identity.GetUserName()</span>
+                        </a>
+                    </li>
+                    <!-- user login dropdown end -->
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <!-- notificatoin dropdown end-->
+            </div>
+            }
+        </header>
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu">
+                    <li class="">
+                        <a class="" href="/Resumes">
+                            <i class="icon_table"></i>
+                            <span>Resumes</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="" href="/CVLetters">
+                            <i class="icon_table"></i>
+                            <span>CV Letters</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="" href="/Packages">
+                            <i class="icon_table"></i>
+                            <span>Packages</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="/Home/About">
+                            <i class="icon_genius"></i>
+                            <span>About</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="" target="new" href="http://junyeongyu.com">
+                            <i class="icon_desktop"></i>
+                            <span>Portfolio</span>
+                        </a>
+                    </li>
+
+                    @if (Request.IsAuthenticated == false)
+                    {
+                        <li class="sub-menu">
+                            <a href="/Account/Register" class="">
+                                <i class="icon_document_alt"></i>
+                                <span>Register</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="/Account/Login" class="">
+                                <i class="icon_desktop"></i>
+                                <span>Login</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                        }
+                        <li>
+                            <a href="javascript:document.getElementById('logoutForm').submit()">
+                                <i class="icon_genius"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+
+                    }
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+
+        <!--Body-->
+        @RenderBody()
+
+        <!--Footer-->
+        <div class="text-right">
+            <div class="credits">
+                Made by <a target="new" href="http://junyeongyu.com/">Junyeong Yu</a>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    </section>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- container section end -->
+    <!-- javascripts -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="/js/jquery.scrollTo.min.js"></script>
+    <script src="/js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
+    <script src="/js/scripts.js"></script>
+    <!-- custom -->
+    <script src="/js/custom.js"></script>
 </body>
 </html>
