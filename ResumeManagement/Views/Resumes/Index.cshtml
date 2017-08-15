@@ -76,7 +76,15 @@
                                         <td>
                                             <div class="btn-group">
                                                 <a class="btn btn-primary" href="/Resumes/Edit/@Html.DisplayFor(modelItem => item.ResumeId)">Edit</a>
-                                                <a class="btn btn-danger trigger-item-delete" data-href="/Resumes/Delete/@Html.DisplayFor(modelItem => item.ResumeId)">Delete</a>
+                                                @using (Html.BeginForm("Delete", "Resumes", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+
+                                                    <div class="form-actions no-color">
+                                                        <input type="hidden" name="ResumeId" value="@Html.DisplayFor(modelItem => item.ResumeId)" />
+                                                        <input type="button" value="Delete" class="btn btn-danger trigger-item-delete" />
+                                                    </div>
+                                                }
                                             </div>
                                         </td>
                                     }

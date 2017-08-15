@@ -154,8 +154,13 @@ namespace ResumeManagement.Controllers
                         db.Entry(tmpResume).State = EntityState.Modified;
 
                         // Items to remove
-                        var removeItems = tmpResume.CVLetters.Where(x => !CVLetterIds.Contains(x.CVLetterId)).ToList();
 
+                        var removeItems = tmpResume.CVLetters.ToList(); // default is deleting all
+                        if (CVLetterIds != null)
+                        {
+                            removeItems = tmpResume.CVLetters.Where(x => !CVLetterIds.Contains(x.CVLetterId)).ToList();
+                        }
+                        
                         foreach (var removeItem in removeItems)
                         {
                             db.Entry(removeItem).State = EntityState.Deleted;
@@ -194,7 +199,7 @@ namespace ResumeManagement.Controllers
              return View(Resume);
         }
 
-        // GET: Resumes/Delete/5
+        /*// GET: Resumes/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -208,14 +213,14 @@ namespace ResumeManagement.Controllers
             }
 
             return View(Resume);
-        }
+        }*/
 
         // POST: Resumes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed([Bind(Include = "ResumeId")] Resume Resume)
         {
-            Resume Resume = getResume(id);
+            Resume = getResume(Resume.ResumeId);
 
             // Delete Foreign Key objects
             foreach (var item in Resume.CVLetters.ToList())

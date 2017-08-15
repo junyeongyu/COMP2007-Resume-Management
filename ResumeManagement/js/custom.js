@@ -18,13 +18,13 @@ $(function () {
 	
 	// add/edit item from items
 	$('.trigger-item-back').bind('click', function (event) {
-		location.href = '/saleItems';
+	    location.href = $(this).data('link');
 	});
 	
     // delete item (resume/cvletter/package) from items
 	$('.trigger-item-delete').bind('click', function (event) {
 		if (confirm('Are you sure to delete this item?')) {
-			location.href = $(this).data('href');
+		    $(this).closest('form').submit();
 		}
 	});
 	
