@@ -198,23 +198,7 @@ namespace ResumeManagement.Controllers
             ViewBag.CVLetters = new MultiSelectList(db.CVLetters.ToList(), "CVLetterId", "Name", CVLetterIds);
              return View(Resume);
         }
-
-        /*// GET: Resumes/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Resume Resume = getResume(id);
-            if (Resume == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(Resume);
-        }*/
-
+        
         // POST: Resumes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

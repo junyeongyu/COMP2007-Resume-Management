@@ -32,5 +32,11 @@
 
         [ForeignKey("CVLetterId")]
         public virtual CVLetter CVLetter { get; set; }
+
+
+        [NotMapped]
+        public string PreviousResumeId { get; set; }
+        [NotMapped]
+        public string PreviousCVLetterId { get; set; }
     }
 }

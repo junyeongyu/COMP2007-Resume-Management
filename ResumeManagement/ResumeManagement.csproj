@@ -284,17 +284,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Resumes\Create.cshtml" />
-    <Content Include="Views\Resumes\Delete.cshtml" />
     <Content Include="Views\Resumes\Details.cshtml" />
     <Content Include="Views\Resumes\Edit.cshtml" />
     <Content Include="Views\Resumes\Index.cshtml" />
     <Content Include="Views\CVLetters\Create.cshtml" />
-    <Content Include="Views\CVLetters\Delete.cshtml" />
     <Content Include="Views\CVLetters\Details.cshtml" />
     <Content Include="Views\CVLetters\Edit.cshtml" />
     <Content Include="Views\CVLetters\Index.cshtml" />
     <Content Include="Views\Packages\Create.cshtml" />
-    <Content Include="Views\Packages\Delete.cshtml" />
     <Content Include="Views\Packages\Details.cshtml" />
     <Content Include="Views\Packages\Edit.cshtml" />
     <Content Include="Views\Packages\Index.cshtml" />

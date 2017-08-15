@@ -4,59 +4,94 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa fa-bars"></i> CV Letters</h3>
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home"></i><a href="/">Home</a></li>
+                    <li><i class="fa fa-bars"></i><a href="/CVLetters">CV Letters</a></li>
+                    <li><i class="fa fa-files-o"></i>CV Letter Details</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Add Item for Sale -->
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        CV Letter Details
+                    </header>
+                    <div class="panel-body">
+                        <div class="form">
+                            @using (Html.BeginForm(null, null, new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "add_form", @class = "form-validate form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
 
-<div>
-    <h4>CVLetter</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.CVLetterId)
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CreateDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Resumes)
-        </dt>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.EditDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.EditDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.EditDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
 
-        <dd>
-            <ul>
-                @foreach (var Package in Model.Resumes)
-                {
-                    <li>@Package.Resume.Name</li>
-                }
-            </ul>
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </dt>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Resumes, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            <ul>
+                                                @foreach (var Package in Model.Resumes)
+                                                {
+                                                    <li>@Package.Resume.Name</li>
+                                                }
+                                            </ul>
+                                            @Html.ValidationMessageFor(model => model.Resumes, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreateDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EditDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EditDate)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CVLetterId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-md-10">
+                                        <button class="btn btn-default trigger-item-back" data-link="/CVLetters" type="button">Back</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page end-->
+    </section>
+</section>
+<!--main content end-->

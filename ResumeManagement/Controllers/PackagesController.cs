@@ -98,45 +98,39 @@ namespace ResumeManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PackageId,Name,ResumeId,CVLetterId")] Package Package)
+        public ActionResult Edit([Bind(Include = "PackageId,Name,ResumeId,CVLetterId,PreviousResumeId,PreviousCVLetterId")] Package Package)
         {
             if (ModelState.IsValid)
             {
-                Package tmpGG = db.Packages.Find(Package.PackageId);
-                tmpGG.ResumeId = Package.ResumeId;
-                tmpGG.Name = Package.Name;
-                tmpGG.CVLetterId = Package.CVLetterId;
-                tmpGG.EditDate = DateTime.UtcNow;
-                db.Entry(tmpGG).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Package tmpPackage = db.Packages.SingleOrDefault(y => y.ResumeId == Package.ResumeId && y.CVLetterId == Package.CVLetterId);
+                bool isMyself = Package.PreviousResumeId == Package.ResumeId && Package.PreviousCVLetterId == Package.CVLetterId;
+                if (tmpPackage == null || isMyself) // duplication should not be allowed but itself needs to be allowed
+                {
+                    Package tmpGG = db.Packages.Find(Package.PackageId);
+                    tmpGG.ResumeId = Package.ResumeId;
+                    tmpGG.Name = Package.Name;
+                    tmpGG.CVLetterId = Package.CVLetterId;
+                    tmpGG.EditDate = DateTime.UtcNow;
+                    db.Entry(tmpGG).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Duplicate entry found");
+                }
             }
             ViewBag.ResumeId = new SelectList(db.Resumes, "ResumeId", "Name", Package.ResumeId);
             ViewBag.CVLetterId = new SelectList(db.CVLetters, "CVLetterId", "Name", Package.CVLetterId);
             return View(Package);
         }
 
-        // GET: Packages/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Package Package = getPackage(id);
-            if (Package == null)
-            {
-                return HttpNotFound();
-            }
-            return View(Package);
-        }
-
         // POST: Packages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed([Bind(Include = "PackageId")] Package Package)
         {
-            Package Package = db.Packages.Find(id);
+            Package = db.Packages.Find(Package.PackageId);
             db.Packages.Remove(Package);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -110,29 +110,14 @@ namespace ResumeManagement.Controllers
             }
             return View(CVLetter);
         }
-
-        // GET: CVLetters/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CVLetter CVLetter = getCVLetter(id);
-            if (CVLetter == null)
-            {
-                return HttpNotFound();
-            }
-            return View(CVLetter);
-        }
-
+        
         // POST: CVLetters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed([Bind(Include = "CVLetterId")] CVLetter CVLetter)
         {
             //CVLetter CVLetter = db.CVLetters.Find(id);
-            CVLetter CVLetter = getCVLetter(id);
+            CVLetter = getCVLetter(CVLetter.CVLetterId);
             // Delete Foreign Key objects
             foreach (var item in CVLetter.Resumes.ToList())
             {
