@@ -226,28 +226,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content_Old\bootstrap.css" />
-    <Content Include="Content_Old\Site.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts_Old\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts_Old\bootstrap.js" />
-    <Content Include="Scripts_Old\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Scripts_Old\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts_Old\jquery-1.10.2.js" />
-    <Content Include="Scripts_Old\jquery-1.10.2.min.js" />
-    <None Include="Scripts_Old\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts_Old\jquery.validate.js" />
-    <Content Include="Scripts_Old\jquery.validate.min.js" />
-    <Content Include="Scripts_Old\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts_Old\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts_Old\modernizr-2.6.2.js" />
-    <Content Include="Scripts_Old\respond.js" />
-    <Content Include="Scripts_Old\respond.min.js" />
-    <Content Include="Scripts_Old\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -303,12 +286,8 @@
     <Folder Include="js\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts_Old\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts_Old\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts_Old\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts_Old\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
