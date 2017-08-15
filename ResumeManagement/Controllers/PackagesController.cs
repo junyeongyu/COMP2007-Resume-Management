@@ -10,11 +10,13 @@ using ResumeManagement.Models;
 
 namespace ResumeManagement.Controllers
 {
+    [Authorize]
     public class PackagesController : Controller
     {
         private DataContext db = new DataContext();
 
         // GET: Packages
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var Packages = db.Packages.Include(g => g.Resume).Include(g => g.CVLetter);
@@ -22,6 +24,7 @@ namespace ResumeManagement.Controllers
         }
 
         // GET: Packages/Details/5
+        [AllowAnonymous]
         public ActionResult Details(string id)
         {
             if (id == null)

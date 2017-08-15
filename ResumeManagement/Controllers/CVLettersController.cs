@@ -10,17 +10,20 @@ using ResumeManagement.Models;
 
 namespace ResumeManagement.Controllers
 {
+    [Authorize]
     public class CVLettersController : Controller
     {
         private DataContext db = new DataContext();
 
         // GET: CVLetters
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.CVLetters.ToList());
         }
 
         // GET: CVLetters/Details/5
+        [AllowAnonymous]
         public ActionResult Details(string id)
         {
             if (id == null)

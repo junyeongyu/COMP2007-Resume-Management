@@ -10,17 +10,20 @@ using ResumeManagement.Models;
 
 namespace ResumeManagement.Controllers
 {
+    [Authorize]
     public class ResumesController : Controller
     {
         private DataContext db = new DataContext();
 
         // GET: Resumes
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Resumes.ToList());
         }
 
         // GET: Resumes/Details/5
+        [AllowAnonymous]
         public ActionResult Details(string id)
         {
             if (id == null)
